@@ -8,10 +8,10 @@ export const Route = createFileRoute('/')({
 
 function WelcomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
             Welcome to Mortar Studio CMS
           </CardTitle>
           <CardDescription className="text-lg">
@@ -27,7 +27,6 @@ function WelcomePage() {
               <Button 
                 size="lg"
                 onClick={() => window.location.href = '/ms-admin'}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
                 Access Admin Panel
               </Button>

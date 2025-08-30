@@ -6,6 +6,7 @@ import path from 'path'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 
 export default defineConfig({
+  base: '/ms-admin/',
   plugins: [
     TanStackRouterVite({ autoCodeSplitting: true }),
     viteReact(),

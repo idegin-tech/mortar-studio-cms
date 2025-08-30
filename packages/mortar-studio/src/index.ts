@@ -27,7 +27,12 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
     const router = Router()
     const basePath = options.config?.basePath || '/ms-admin'
     
-    const dashboardPath = path.join(__dirname, '../dashboard')
+    let dashboardPath: string
+    try {
+        dashboardPath = path.resolve(require.resolve('mortar-studio/package.json'), '../dashboard')
+    } catch {
+        dashboardPath = path.join(__dirname, '../dashboard')
+    }
 
     router.get('/ms-admin/api/health', (req: Request, res: Response) => {
         res.json({

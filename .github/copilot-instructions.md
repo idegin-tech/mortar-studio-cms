@@ -15,8 +15,8 @@ Don't add code comments.
 
 
 # About The Mortar Studio Package
-It's an express app middleware that serves the CMS (/app/dashboard) .next build in the /ms-admin/* and other mortar studio package API routes routes in /ms-admin/api. It uses SQL based on the host project's mortar-studio.config.json file.
-The mortar-studio.config.json holds the metadata and configuration for the middleware. when the mortar studio package is built we move the dashboard build to the mortar studio package dir so they can both be packages for the npm registry. The mortar studio package will be linked to the test project for testing and development.
+It's an express app middleware that serves the CMS (/app/dashboard) .next build in the /ms-admin/* and other mortar studio package API routes routes in /ms-admin/api. It uses SQL based on the host project's incoming config object.
+The mortar-studio.config.json holds the metadata and configuration for the middleware. when the mortar studio package is built we move the dashboard build to the mortar studio package dir so they can both be packages for the npm registry. The mortar studio package will be linked to the test project for testing and development using the npm link command.
 
 # The Test Project
 The test project is where we will be testing the mortar studio middleware (test-project-express & test-project-next) on both an express app, as well as a next js app.

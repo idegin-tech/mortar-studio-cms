@@ -22,22 +22,12 @@ export interface MortarStudioOptions {
 }
 
 export function mortarStudio(options: MortarStudioOptions = {}) {
+    const express = require('express')
     const router = Router()
     const basePath = options.config?.basePath || '/ms-admin'
     const hostUrl = options.config?.host || `http://localhost:${process.env.PORT || 3000}`
     
     const dashboardPath = path.join(__dirname, '../dashboard')
-
-    router.use('/ms-admin', (req: Request, res: Response, next: NextFunction) => {
-        if (req.path === '' || req.path === '/') {
-            res.sendFile(path.join(dashboardPath, 'index.html'))
-        } else if (req.path.startsWith('/api/')) {
-            next()
-        } else {
-            const express = require('express')
-            express.static(dashboardPath)(req, res, next)
-        }
-    })
 
     router.get('/ms-admin/api/health', (req: Request, res: Response) => {
         res.json({
@@ -62,6 +52,18 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
         })
     })
 
+    router.get('/ms-admin/api', (req: Request, res: Response) => {
+        res.json({
+            message: 'Mortar Studio API',
+            version: '1.0.0',
+            endpoints: [
+                '/ms-admin/api/health',
+                '/ms-admin/api/config'
+            ],
+            host: hostUrl
+        })
+    })
+
     router.post('/ms-admin/api/*', (req: Request, res: Response) => {
         res.json({
             message: 'API endpoint not implemented',
@@ -69,6 +71,12 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
             method: req.method,
             host: hostUrl
         })
+    })
+
+    router.use('/ms-admin', express.static(dashboardPath))
+
+    router.get('/ms-admin*', (req: Request, res: Response) => {
+        res.sendFile(path.join(dashboardPath, 'index.html'))
     })
 
     return router

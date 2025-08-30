@@ -9,14 +9,13 @@ app.use(express.json())
 app.use(MortarStudioExpress({
     config: {
         database: {
-            type: 'mysql',
+            type: 'sqlite',
             host: 'localhost',
             username: 'test',
             password: 'test',
             database: 'mortar_studio_test',
             ssl: false
         },
-        host: `http://localhost:${PORT}`
     }
 }))
 

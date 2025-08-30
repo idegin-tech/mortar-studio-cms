@@ -13,7 +13,7 @@ interface MortarStudioConfig {
         ssl?: boolean
         connectionString?: string
     }
-    host?: string
+    // host?: string
     basePath?: string
 }
 
@@ -22,10 +22,10 @@ export interface MortarStudioOptions {
 }
 
 export function mortarStudio(options: MortarStudioOptions = {}) {
+    const PORT = process.env.PORT || 3000
     const express = require('express')
     const router = Router()
     const basePath = options.config?.basePath || '/ms-admin'
-    const hostUrl = options.config?.host || `http://localhost:${process.env.PORT || 3000}`
     
     const dashboardPath = path.join(__dirname, '../dashboard')
 
@@ -34,7 +34,6 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
             status: 'ok',
             timestamp: new Date().toISOString(),
             config: options.config ? 'loaded' : 'default',
-            host: hostUrl,
             environment: process.env.NODE_ENV || 'development'
         })
     })
@@ -47,7 +46,6 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
                 connected: false,
                 ssl: options.config.database.ssl || false
             } : null,
-            host: hostUrl,
             basePath: basePath
         })
     })
@@ -60,7 +58,6 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
                 '/ms-admin/api/health',
                 '/ms-admin/api/config'
             ],
-            host: hostUrl
         })
     })
 
@@ -69,7 +66,6 @@ export function mortarStudio(options: MortarStudioOptions = {}) {
             message: 'API endpoint not implemented',
             path: req.path,
             method: req.method,
-            host: hostUrl
         })
     })
 

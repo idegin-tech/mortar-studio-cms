@@ -1,39 +1,53 @@
 import { createFileRoute } from '@tanstack/react-router'
-import logo from '../logo.svg'
+import { apiConfig } from '../config/api'
 
 export const Route = createFileRoute('/')({
-  component: App,
+  component: Dashboard,
 })
 
-function App() {
+function Dashboard() {
   return (
-    <div className="text-center">
-      <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
-        <img
-          src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
-          alt="logo"
-        />
-        <p>
-          Edit <code>src/routes/index.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack
-        </a>
-      </header>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Mortar Studio CMS
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Content Management System Dashboard
+            </p>
+            
+            <div className="bg-white overflow-hidden shadow rounded-lg max-w-md mx-auto">
+              <div className="px-4 py-5 sm:p-6">
+                <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
+                  System Information
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-500">Environment:</span>
+                    <span className="text-sm font-medium text-gray-900">
+                      {apiConfig.isLocal ? 'Development' : 'Production'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-500">API Endpoint:</span>
+                    <span className="text-sm font-medium text-gray-900 truncate ml-2">
+                      {apiConfig.baseUrl}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-500">Base Path:</span>
+                    <span className="text-sm font-medium text-gray-900">
+                      /ms-admin/
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

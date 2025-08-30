@@ -9,11 +9,17 @@
     "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["express", "mortar-studio", "test"],
+  "keywords": [
+    "express",
+    "mortar-studio",
+    "test"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/cors": "^2.8.19",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mortar-studio": "file:../../packages/mortar-studio"
   },

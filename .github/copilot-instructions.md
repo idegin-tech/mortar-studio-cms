@@ -6,6 +6,7 @@ Make sure to follow express and nodejs Best practices.
 Make sure to follow the project's file naming convention <name>.<purpose>.<extension> Ex. random.utils.ts or user.Make sure your implementation is production ready.
 Make sure to use packages instead of custom implementations.
 Feel free to install any needed packages.
+When working on the UI, make sure to only use shadcn and shadcn colors.
 MS means Mortar Studio.
 Don't add code comments.
 Don't add code comments.
@@ -19,3 +20,8 @@ The mortar-studio.config.json holds the metadata and configuration for the middl
 
 # The Test Project
 The test project is where we will be testing the mortar studio middleware (test-project-express & test-project-next) on both an express app, as well as a next js app.
+
+# Environments
+Local: This is for development and of the MS package locally.
+Development: This is the stage the user (host project) will be testing the MS package before going to production.
+Production: This is the live version of the MS package on the user's host project.

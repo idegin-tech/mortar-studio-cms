@@ -1,53 +1,61 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { apiConfig } from '../config/api'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 
 export const Route = createFileRoute('/')({
-  component: Dashboard,
+  component: WelcomePage,
 })
 
-function Dashboard() {
+function WelcomePage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Mortar Studio CMS
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Content Management System Dashboard
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-4">
+      <Card className="w-full max-w-2xl">
+        <CardHeader className="text-center">
+          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Welcome to Mortar Studio CMS
+          </CardTitle>
+          <CardDescription className="text-lg">
+            A powerful content management system for modern applications
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div className="text-center space-y-4">
+            <p className="text-muted-foreground">
+              Get started by accessing the admin panel to manage your content.
             </p>
-            
-            <div className="bg-white overflow-hidden shadow rounded-lg max-w-md mx-auto">
-              <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">
-                  System Information
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-500">Environment:</span>
-                    <span className="text-sm font-medium text-gray-900">
-                      {apiConfig.isLocal ? 'Development' : 'Production'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-500">API Endpoint:</span>
-                    <span className="text-sm font-medium text-gray-900 truncate ml-2">
-                      {apiConfig.baseUrl}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-sm text-gray-500">Base Path:</span>
-                    <span className="text-sm font-medium text-gray-900">
-                      /ms-admin/
-                    </span>
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg"
+                onClick={() => window.location.href = '/ms-admin'}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              >
+                Access Admin Panel
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => window.open('https://github.com/idegin-tech/mortar-studio-cms', '_blank')}
+              >
+                View Documentation
+              </Button>
             </div>
           </div>
-        </div>
-      </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
+            <div className="text-center p-4 rounded-lg bg-muted/50">
+              <h3 className="font-semibold text-sm text-foreground">Content Management</h3>
+              <p className="text-xs text-muted-foreground mt-1">Create and manage your content with ease</p>
+            </div>
+            <div className="text-center p-4 rounded-lg bg-muted/50">
+              <h3 className="font-semibold text-sm text-foreground">Modern UI</h3>
+              <p className="text-xs text-muted-foreground mt-1">Beautiful interface built with Shadcn UI</p>
+            </div>
+            <div className="text-center p-4 rounded-lg bg-muted/50">
+              <h3 className="font-semibold text-sm text-foreground">Developer Friendly</h3>
+              <p className="text-xs text-muted-foreground mt-1">Easy to integrate and customize</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

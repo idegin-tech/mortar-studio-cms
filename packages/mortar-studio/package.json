@@ -1,13 +1,32 @@
 {
   "name": "mortar-studio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express middleware for Mortar Studio CMS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "dashboard"
+  ],
   "scripts": {
+    "build": "npm run build:dashboard && npm run build:package",
+    "build:dashboard": "node scripts/build-dashboard.js",
+    "build:package": "tsup",
+    "dev": "tsup --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["express", "middleware", "cms", "mortar-studio"],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "fs-extra": "^11.2.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.0"
+  }
 }
